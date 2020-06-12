@@ -2,7 +2,10 @@
     "name": "Arduino_Raw_Serial",
     "description": "Exploration of communications using Serial.print and Serial.read in the Arduino sketch",
     "version": "0.0.1",
-    "dependencies": {},
+    "dependencies": {
+        "node-red-dashboard": "2.22.1",
+        "node-red-node-serialport": "0.10.2"
+    },
     "node-red": {
         "settings": {
             "flowFile": "flows_phil.json",
