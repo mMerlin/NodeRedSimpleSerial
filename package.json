@@ -1,0 +1,12 @@
+{
+    "name": "Arduino_Raw_Serial",
+    "description": "Exploration of communications using Serial.print and Serial.read in the Arduino sketch",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "flows_phil.json",
+            "credentialsFile": "flows_phil_cred.json"
+        }
+    }
+}
