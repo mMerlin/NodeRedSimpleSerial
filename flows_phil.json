@@ -3,14 +3,14 @@
         "id": "345afb65.4fc78c",
         "type": "tab",
         "label": "ArduinoSerial",
-        "disabled": false,
+        "disabled": true,
         "info": ""
     },
     {
         "id": "832980e7.d86448",
         "type": "tab",
         "label": "Split",
-        "disabled": false,
+        "disabled": true,
         "info": ""
     },
     {
@@ -39,6 +39,13 @@
         "type": "tab",
         "label": "Don bidirectional",
         "disabled": true,
+        "info": ""
+    },
+    {
+        "id": "7522f38c.f4e4d4",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
         "info": ""
     },
     {
@@ -324,9 +331,9 @@
         "dot": false,
         "ymin": "0",
         "ymax": "5",
-        "removeOlder": 1,
+        "removeOlder": "5",
         "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
+        "removeOlderUnit": "60",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -451,9 +458,9 @@
         "dot": false,
         "ymin": "0",
         "ymax": "5",
-        "removeOlder": 1,
+        "removeOlder": "5",
         "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
+        "removeOlderUnit": "60",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -992,14 +999,15 @@
         "type": "function",
         "z": "8942ccb9.be26",
         "name": "prepend date",
-        "func": "var d = new Date();\nmsg.payload = \n        d.getFullYear()\n\t+ '-'\n\t+ ('0' + (d.getMonth()+1)).slice(-2)\n\t+ '-'\n\t+ ('0' + d.getDate()).slice(-2)\n\t+ ' '\n\t+ ('0' + d.getHours()).slice(-2)\n\t+ ':'\n\t+ ('0' + d.getMinutes()).slice(-2)\n\t+ ':'\n\t+ ('0' + d.getSeconds()).slice(-2)\n\t+ '.'\n\t+ d.getMilliseconds()  \n\t+ ', topic: ' \n\t+ msg.topic \n\t+ ', payload: ' \n\t+ msg.payload;\n\n\nreturn msg;",
+        "func": "var d = new Date();\nmsg.stamp = \n        d.getFullYear()\n\t+ '-'\n\t+ ('0' + (d.getMonth()+1)).slice(-2)\n\t+ '-'\n\t+ ('0' + d.getDate()).slice(-2)\n\t+ ' '\n\t+ ('0' + d.getHours()).slice(-2)\n\t+ ':'\n\t+ ('0' + d.getMinutes()).slice(-2)\n\t+ ':'\n\t+ ('0' + d.getSeconds()).slice(-2)\n\t+ '.'\n\t+ d.getMilliseconds()  \n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 150,
         "y": 80,
         "wires": [
             [
-                "3e664dc7.bf96aa"
+                "3e664dc7.bf96aa",
+                "62df5adf.9176a4"
             ]
         ]
     },
@@ -1375,9 +1383,9 @@
         "min": 0,
         "max": "5",
         "colors": [
-            "#00B500",
-            "#E6E600",
-            "#CA3838"
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
         ],
         "seg1": "",
         "seg2": "",
@@ -1434,8 +1442,8 @@
         "offvalueType": "str",
         "officon": "",
         "offcolor": "",
-        "x": 110,
-        "y": 100,
+        "x": 430,
+        "y": 640,
         "wires": [
             [
                 "e3117842.fe96d8"
@@ -1448,8 +1456,8 @@
         "z": "e9818307.3d0e98",
         "name": "USB0-serial-out",
         "serial": "346a2caf.280044",
-        "x": 380,
-        "y": 100,
+        "x": 700,
+        "y": 640,
         "wires": []
     },
     {
@@ -1682,7 +1690,7 @@
         "id": "375ea9fa.c4c146",
         "type": "change",
         "z": "8efdfe2.3cece8",
-        "name": "",
+        "name": "Date Timestamp",
         "rules": [
             {
                 "t": "set",
@@ -1697,11 +1705,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 580,
+        "x": 340,
         "y": 320,
         "wires": [
             [
-                "8e9a6de3.77169"
+                "8c3b05a5.37a1a"
             ]
         ]
     },
@@ -1714,10 +1722,127 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 860,
-        "y": 340,
+        "complete": "true",
+        "targetType": "full",
+        "x": 950,
+        "y": 300,
         "wires": []
+    },
+    {
+        "id": "a102ef24.35aaa",
+        "type": "inject",
+        "z": "7522f38c.f4e4d4",
+        "name": "Injection",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 300,
+        "y": 300,
+        "wires": [
+            [
+                "191b7013.f91cc"
+            ]
+        ]
+    },
+    {
+        "id": "851fc70e.c7a0c",
+        "type": "debug",
+        "z": "7522f38c.f4e4d4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 730,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "191b7013.f91cc",
+        "type": "function",
+        "z": "7522f38c.f4e4d4",
+        "name": "timeToString",
+        "func": "msg.tick = new Date(msg.payload).toISOString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 530,
+        "y": 300,
+        "wires": [
+            [
+                "851fc70e.c7a0c"
+            ]
+        ]
+    },
+    {
+        "id": "ce7dbc01.5f49b8",
+        "type": "inject",
+        "z": "8942ccb9.be26",
+        "name": "",
+        "topic": "",
+        "payload": "hello",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 70,
+        "y": 200,
+        "wires": [
+            [
+                "9f3a68b2.cdb16"
+            ]
+        ]
+    },
+    {
+        "id": "62df5adf.9176a4",
+        "type": "debug",
+        "z": "8942ccb9.be26",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 420,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "d42075e1.420538",
+        "type": "json",
+        "z": "8efdfe2.3cece8",
+        "name": "",
+        "property": "payload",
+        "action": "str",
+        "pretty": true,
+        "x": 730,
+        "y": 300,
+        "wires": [
+            [
+                "8e9a6de3.77169"
+            ]
+        ]
+    },
+    {
+        "id": "8c3b05a5.37a1a",
+        "type": "function",
+        "z": "8efdfe2.3cece8",
+        "name": "to string",
+        "func": "msg.payload.stamp = new Date(msg.payload.time).toISOString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 560,
+        "y": 320,
+        "wires": [
+            [
+                "d42075e1.420538"
+            ]
+        ]
     }
 ]
