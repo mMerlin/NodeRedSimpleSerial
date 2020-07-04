@@ -1238,7 +1238,7 @@
         "type": "debug",
         "z": "efb28c2d.38cb38",
         "name": "Output 1",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1902,11 +1902,13 @@
         "name": "Collapse",
         "rules": [
             {
-                "t": "set",
+                "t": "change",
                 "p": "payload",
                 "pt": "msg",
-                "to": "$replace(msg.payload, /\\s/, \"\")",
-                "tot": "jsonata"
+                "from": "\\s",
+                "fromt": "re",
+                "to": "",
+                "tot": "str"
             }
         ],
         "action": "",
