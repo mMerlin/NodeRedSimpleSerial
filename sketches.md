@@ -12,7 +12,7 @@
 
 [sketch file](sketchbook/AnalogReadSerial01/AnalogReadSerial01.ino)
 
-Initial test sketch, based on [Analog Read Serial](http://www.arduino.cc/en/Tutorial/AnalogReadSerial) Tutorial example. Adjusted to read data from 2 analog pins, and to handle single character commands receive from the serial line.
+Initial test sketch, based on [Analog Read Serial](http://www.arduino.cc/en/Tutorial/AnalogReadSerial) Tutorial example. Adjusted to read data from 2 analog pins, and to handle single character commands received from the serial line.
 
 Raw measurement values and calculated voltages are sent as human readable csv to the serial port. Here, human readable means a space after each comma.
 
@@ -26,15 +26,15 @@ This provides enough of an interface to create a Node-RED flow that receives and
 
 [sketch file](sketchbook/AnalogReadSerial02/AnalogReadSerial02.ino)
 
-An adjusted sketch that more aggressively follows some coding conventions. Constant values are stored in `const` variables, with all upper case names. Literal values are move to named constants. Several signed variables have been changed to unsigned. The common measurement code has been refactored into a function. A global variable has been moved local to the single function that needs to reference it. The command processing code has been move to a separate function. Constant values and string literals have been moved to program memory. Change the csv output to remove the space after each comma, which allows the csv parser node to process it more cleanly.
+An adjusted sketch that more aggressively follows some coding conventions. Constant values are stored in `const` variables, with all upper case names. Literal values are moved to named constants. Several signed variables have been changed to unsigned. The common measurement code has been refactored into a function. A global variable has been moved local to the single function that needs to reference it. The command processing code has been moved to a separate function. Constant values and string literals have been moved to program memory. Changed the csv output to remove the space after each comma, which allows the csv parser node to process it more cleanly.
 
 ## <a name="link_read_serial_03">⚓</a> Analog Read Serial 03
 
 [sketch file](sketchbook/AnalogReadSerial03/AnalogReadSerial03.ino)
 
-Prepare to restructure with using c++ classes for handling the separate functions of the sketch. Or at least simulate the way class methods are called and work with encapsulated data.
+Prepare to restructure using c++ classes for handling the separate functions of the sketch. Or at least simulate the way class methods are called and work with encapsulated data.
 
-Make the final non-const global variable local and static in the only function the references it. Refactor the measurement functionality into a function that manages the interval internally. The loop function no longer needs and conditional logic. Instead it passes the current micros() time stamp to each called function, when lets them use elapsed time to control their internal state. For functions that do not actually use the time marker in their logic, add an unused attribute tag, to prevent the compiler from complaining about unused arguments.
+Make the final non-const global variable local and static in the only function that references it. Refactor the measurement functionality into a function that manages the interval internally. The loop function no longer needs any conditional logic. Instead it passes the current micros() time stamp to each called function, when lets them use elapsed time to control their internal state. For functions that do not actually use the time marker in their logic, add an unused attribute tag, to prevent the compiler from complaining about unused arguments.
 
 ## <a name="link_read_serial_04">⚓</a> Analog Read Serial 04
 

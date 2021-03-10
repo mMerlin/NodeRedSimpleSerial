@@ -7,6 +7,8 @@ Exploration of Node-RED and Arduino simple serial communication using Serial.pri
 
 To simplify recording notes and documentation, much of the research content is in the [repository wiki](https://github.com/mMerlin/NodeRedSimpleSerial/wiki/). Where it is easy to access and update, without needing edit, commit, push cycles.
 
+To view the repository content, start from its [github.io page](https://mmerlin.github.io/NodeRedSimpleSerial/)
+
 * [Sketches](sketches.md)
 
 * [Node-RED Environment](https://github.com/mMerlin/NodeRedSimpleSerial/wiki/node-red-environment)
