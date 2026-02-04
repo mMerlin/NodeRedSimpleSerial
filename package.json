@@ -3,8 +3,8 @@
     "description": "Exploration of communications using Serial.print and Serial.read in the Arduino sketch",
     "version": "0.0.1",
     "dependencies": {
-        "node-red-dashboard": "2.22.1",
-        "node-red-node-serialport": "0.10.2"
+        "node-red-dashboard": "3.6.6",
+        "node-red-node-serialport": "2.0.3"
     },
     "node-red": {
         "settings": {
@@ -13,3 +13,4 @@
         }
     }
 }
+
